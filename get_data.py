@@ -6,8 +6,8 @@ import os
 import pandas as pd
 
 
-train_path ='C:/Users/Firas/Desktop/Data Camp/Data Camp Git/Train Data'
-test_path = 'C:/Users/Firas/Desktop/Data Camp/Data Camp Git/Test Data'
+train_path ='Data/Train Data'
+test_path = 'Data/Test Data'
 
 def get_bike_data(test=False): #Get raw citibike data 
     path = train_path
