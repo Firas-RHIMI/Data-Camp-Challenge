@@ -17,8 +17,8 @@ class FeatureExtractor(object):
 
     def transform(self, X_df):
 
-#         path = os.path.dirname(__file__)
-#         weather = pd.read_csv(os.path.join(path, 'Data/Weather Data/Train_Weather.csv'))
+        path = os.path.dirname(__file__)
+        weather = pd.read_csv(os.path.join(path, 'weather.csv.zip'))
 
         def process_date(X):
             return np.c_[X['Year'], X['Month'], X['Day']]

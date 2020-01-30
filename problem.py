@@ -15,8 +15,8 @@ Predictions = rw.prediction_types.make_regression()
 
 class BikeSharing(FeatureExtractorRegressor):
     def __init__(self, workflow_element_names=[
-            'feature_extractor', 'regressor']):#, 'award_notices_RAMP.csv']):
-        super(BikeSharing, self).__init__(workflow_element_names)
+            'feature_extractor', 'regressor', 'weather.csv.zip']):
+        super(BikeSharing, self).__init__(workflow_element_names[:2])
         self.element_names = workflow_element_names
 
 workflow = BikeSharing()
