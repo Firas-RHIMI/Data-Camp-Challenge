@@ -6,25 +6,25 @@ import os
 import pandas as pd
 
 
-train_path ='Data/Train Data'
-test_path = 'Data/Test Data'
+train_path ='data/train'
+test_path = 'data/test'
 
 def get_bike_data(test=False): #Get raw citibike data 
     path = test_path if test else train_path
     try:
-        data = pd.read_csv(os.path.join(path, 'bike_data.csv'))
+        data = pd.read_csv(os.path.join(path, 'bike_data.csv.zip'),low_memory=False)
     except:
         data = pd.DataFrame()
         for file in os.listdir(path):
             aux = pd.read_csv(os.path.join(path, file))
             data = pd.concat((data, aux), ignore_index=True)
-        data.to_csv(os.path.join(path, 'bike_data.csv'))
+        data.to_csv(os.path.join(path, 'bike_data.csv.zip'))
     return data
     
 def get_flow_data(test=False): #Processes raw data and return flow data for predictions
     path = test_path if test else train_path
     try:
-        data = pd.read_csv(os.path.join(path, 'flow_data.csv'))
+        data = pd.read_csv(os.path.join(path, 'flow_data.csv.zip'), low_memory=False)
 
     except:
         data = get_bike_data(test)
@@ -68,7 +68,7 @@ def get_flow_data(test=False): #Processes raw data and return flow data for pred
         # columns to keep
         keep_columns=['Year','Month','Day','Hour','Station ID','Station Name','Longitude','Latitude','Surplus']
         data = merge[keep_columns]
-        data.to_csv(os.path.join(path, 'flow_data.csv'))
+        data.to_csv(os.path.join(path, 'flow_data.csv.zip'))
 
     return data
 

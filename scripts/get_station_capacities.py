@@ -38,6 +38,6 @@ station_with_caps['Cliff St & Fulton St_1'] = 37
 station_with_caps['Exchange Place'] = 30
 
 # Save file
-json.dump(station_with_caps, open('../Data/stations.json', 'w'))
+json.dump(station_with_caps, open('../data/stations.json', 'w'))
 
 

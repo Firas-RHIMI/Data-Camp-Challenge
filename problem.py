@@ -47,15 +47,15 @@ def get_cv(X, y):
     return cv.split(X,y, groups=X['Station ID'])
 
 def _read_data(path, f_name):
-    data = pd.read_csv(os.path.join(path, 'Data', f_name), low_memory=False)#,compression='zip')
+    data = pd.read_csv(os.path.join(path, 'data', f_name), low_memory=False ,compression='zip')
     y_array = data[_target_column_name].values
     X_df = data.drop(_target_column_name, axis=1)
     return X_df, y_array
 
 def get_train_data(path='.'):
-    f_name = 'Train Data/flow_data.csv'
+    f_name = 'train/flow_data.csv.zip'
     return _read_data(path, f_name)
 
 def get_test_data(path='.'):
-    f_name = 'Test Data/flow_data.csv'
+    f_name = 'test/flow_data.csv.zip'
     return _read_data(path, f_name)

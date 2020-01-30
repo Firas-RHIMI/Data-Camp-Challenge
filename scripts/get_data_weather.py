@@ -35,9 +35,9 @@ def scrap_and_save(data,dates,path): #scraping and saving the csv files
     
 # scraping Train weather and saving the csv file 
 train_weather = pd.DataFrame()
-scrap_and_save(train_weather,train_dates,'Data\Weather Data\Train_Weather.csv')
+scrap_and_save(train_weather,train_dates,'data\Weather Data\Train_Weather.csv')
 
 # scraping Test weather and saving the csv file
 test_weather = pd.DataFrame()
-scrap_and_save(test_weather,test_dates,'Data\Weather Data\Test_Weather.csv')
+scrap_and_save(test_weather,test_dates,'data\Weather Data\Test_Weather.csv')
 
