@@ -1,7 +1,7 @@
 # RAMP starting kit on Bike Sharing Stations Load managing system
 
 
-_Authors: Firas Rhimi, Etienne Lenaour, Elyes Karray, Ryme Kabak, Ghassen Ben Hassine, Mehdi Bennaceur
+_Authors: Firas Rhimi, Etienne Le Naour, Elyes Karray, Ryme Kabak, Ghassen Ben Hassine, Mehdi Bennaceur
 
 
 
