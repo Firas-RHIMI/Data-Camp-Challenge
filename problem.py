@@ -28,7 +28,7 @@ class PinballLoss(BaseScoreType):
     def __init__(self, name='pinball loss', precision=2):
         self.name = name
         self.precision = precision
-        self.tau = 0.3
+        self.tau = 0.7
 
     def __call__(self, y_true, y_pred):
         if isinstance(y_true, pd.Series):
