@@ -18,7 +18,7 @@ class FeatureExtractor(object):
     
     def transform(self,X_df):  
         
-        weather = pd.read_csv('data/Weather/weather.csv')
+        weather = pd.read_csv('data/weather/Weather.csv')
         
         def process_date(X):
             ts = pd.to_datetime(X[['Year','Month','Day']])
