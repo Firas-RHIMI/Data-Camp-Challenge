@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+from pandas.tseries.holiday import USFederalHolidayCalendar as calendar
 import numpy as np
 from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
@@ -15,12 +16,17 @@ class FeatureExtractor(object):
     def fit(self, X_df, y_array):
         return self
     
-    def transform(self,X_df):
-        path = os.path.dirname(__file__)
-        weather = pd.read_csv(os.path.join(path, 'weather.csv.zip'))
+    def transform(self,X_df):  
+        
+        weather = pd.read_csv('data/Weather/weather.csv')
         
         def process_date(X):
-            return np.c_[X['Year'], X['Month'], X['Day'],X['Hour']]
+            ts = pd.to_datetime(X[['Year','Month','Day']])
+            X['weekday']= ts.dt.weekday
+            cal=calendar()
+            holidays = cal.holidays(start=ts.min(), end=ts.max()) 
+            X['IsHoliday'] = ts.apply(lambda x: int(x in holidays))
+            return np.c_[X['Year'], X['Month'], X['Day'],X['Hour'],X['weekday'],X['IsHoliday']]
         date_transformer = FunctionTransformer(process_date, validate=False)
         
         def process_station(X):
@@ -46,9 +52,7 @@ class FeatureExtractor(object):
             weather['Temperature'] = (weather['Temperature'].str[:-2]).astype(float)
             weather['Relative Humidity'] = (weather['Relative Humidity'].str[:-1]).astype(float)
             df = pd.merge(X, weather, on=['Year', 'Month', 'Day', 'Hour'], how='left', left_index=True)
-            return df[['Temperature', 'Apparent Temperature', 'Wind', 'Relative Humidity']] 
-
-        
+            return df[['Temperature', 'Apparent Temperature', 'Wind', 'Relative Humidity']]   
         weather_transformer = FunctionTransformer(process_weather, validate=False)
 
 
