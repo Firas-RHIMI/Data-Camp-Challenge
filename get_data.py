@@ -4,7 +4,6 @@
 
 import os 
 import pandas as pd
-import numpy as np 
 
 
 train_path ='data/train'
@@ -30,12 +29,12 @@ def get_flow_data(test=False): #Processes raw data and return flow data for pred
     except:
         data = get_bike_data(test)
         ## process time
-        start=pd.to_datetime(data['Start Time'],format='%Y-%m-%d%H:%M%S')
+        start=pd.to_datetime(data['Start Time'])
         data['Start Year']=start.dt.year
         data['Start Month']= start.dt.month
         data['Start Day']= start.dt.day
         data['Start Hour']= start.dt.hour
-        stop= pd.to_datetime(data['Stop Time'],format='%Y-%m-%d%H:%M%S')
+        stop= pd.to_datetime(data['Stop Time'])
         data['Stop Year']=stop.dt.year
         data['Stop Month']= stop.dt.month
         data['Stop Day']= stop.dt.day
